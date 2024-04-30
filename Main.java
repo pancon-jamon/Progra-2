@@ -16,10 +16,16 @@ public class Main {
         
         NumeroComplejo numCompRest;//no necesita ser instanciado porque no va a necesitar los atributos por, ahora solo es un puntero, no un objeto
         numCompRest = numeroComplejoUno.restaNumComplejos(numeroComplejoDos);
+        
         //String numero = JOptionPane.showInputDialog("Digite 1 si desea ingresar el numero complejo uno o 2 el numero complejo dos"); 
-        JOptionPane.showMessageDialog(null, numeroComplejoUno + "\n" + numeroComplejoDos, "Numeros complejos", 1);//el numero al final me permite desplegar diferentes mensajes predeterminados
-        JOptionPane.showMessageDialog(null,"Su suma es " + numCompTres, "Suma complejos" , 1);//el numero al final me permite desplegar diferentes mensajes predeterminados
-        JOptionPane.showMessageDialog(null,"Su resta es " + numCompRest, "Resta complejos" , 1);
+        int opcion = 0;
+        do{
+            JOptionPane.showMessageDialog(null, numeroComplejoUno + "\n" + numeroComplejoDos, "Numeros complejos", 1);//el numero al final me permite desplegar diferentes mensajes predeterminados
+            JOptionPane.showMessageDialog(null,numCompTres, "Suma complejos" , 1);//el numero al final me permite desplegar diferentes mensajes predeterminados
+            JOptionPane.showMessageDialog(null,numCompRest, "Resta complejos" , 1);
+            opcion = JOptionPane.showConfirmDialog(null, "Continuar?");
+        }while(opcion == JOptionPane.YES_NO_OPTION);
+        
 
     }
     
