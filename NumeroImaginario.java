@@ -3,16 +3,15 @@ package Negocio;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
-public class NumeroImaginario {
-    private double numeroR;
-    private double numeroI;
+public class NumeroComplejo {
+    private double numeroR, numeroC;
     
-    public NumeroImaginario(){
+    public NumeroComplejo(){
         
     }
-    public NumeroImaginario(double numeroR, double numeroI){
+    public NumeroComplejo(double numeroR, double numeroI){
         this.numeroR = numeroR;
-        this.numeroI = numeroI;
+        this.numeroC = numeroI;
     }
 
     public double getNumeroR() {
@@ -23,27 +22,40 @@ public class NumeroImaginario {
         this.numeroR = numeroR;
     }
 
-    public double getNumeroI() {
-        return numeroI;
+    public double getNumeroC() {
+        return numeroC;
     }
 
-    public void setNumeroI(double numeroI) {
-        String linea = JOptionPane.showInputDialog("Ingrese la parte real y parte imaginaria de un numero imaginario");
-        StringTokenizer st = new StringTokenizer(linea);//tokenizar significa dividir un string en partes
-        this.numeroR = Double.parseDouble(st.nextToken());
-        this.numeroI = Double.parseDouble(st.nextToken());
+    public void setNumeroC() {
+        try{
+            String linea = JOptionPane.showInputDialog("Digite la parte real y parte imaginaria de un numero complejo, separada por una coma");
+            StringTokenizer st = new StringTokenizer(linea, ",");//tokenizar significa dividir un string en partes, 
+            
+            this.numeroR = Double.parseDouble(st.nextToken());
+            this.numeroC = Double.parseDouble(st.nextToken());
+        }catch(NumberFormatException e){//Exception toma cualquier error, para este es especifico de numeros
+            System.out.println("Ingrese numeros");
+            setNumeroC();
+        }
+
+    }
+   public NumeroComplejo sumaNumComplejos(NumeroComplejo numComp2){
+        NumeroComplejo numCompDos = new NumeroComplejo();
+        numCompDos.numeroR = this.numeroR + numComp2.numeroR;
+        numCompDos.numeroC = this.numeroC + numComp2.numeroC;
+        return numCompDos;
+    }
+   
+   public NumeroComplejo restaNumComplejos(NumeroComplejo numComp2){
+        NumeroComplejo numCompDos = new NumeroComplejo();
+        numCompDos.numeroR = this.numeroR - numComp2.numeroR;
+        numCompDos.numeroC = this.numeroC - numComp2.numeroC;
+        return numCompDos;
     }
 
     @Override
     public String toString() {
-        return "NumeroImaginario{" + "numeroE=" + numeroR + ", numeroI=" + numeroI + '}';
+        return "Parte compleja: "+ numeroC + " i \n" + "Parte real: " + numeroR;
     }
     
-    public void setNumImaginario(){
-        try{
-            
-        }catch(NumberFormatException e){
-            
-        }
-    }
 }
