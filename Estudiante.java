@@ -3,7 +3,7 @@ package Fuentes;
 
 /**
  *
- * @author LabP3E009
+ * @author Claudia Coello
  */
 public class Estudiante {
     private String nombre;
